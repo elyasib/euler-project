@@ -8,13 +8,13 @@ int main()
 	unsigned long temp = 0; 
 	unsigned long limit = 4000000; 
 	unsigned long accum = num2; 
-	while (num2 <limit) { 
+	while (num2 < limit) { 
 	 	temp = num2; 
 	 	num2 += num1; 
 	 	num1 = temp; 
 	 	if (num2 % 2 == 0) 
 	 	 	accum += num2; 
-	 	} 
+ 	} 
 	printf("accum: %lu \n",accum); 
 	return 0; 
 }
