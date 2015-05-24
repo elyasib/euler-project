@@ -2,28 +2,13 @@
 //Find the sum of all the multiples of 3 or 5 below 1000.
 
 object problem1 {
-  def main(args: Array[String]) { 
-    val numA: Int = 3 
-	val numB: Int = 5 
-	val limit: Int = 1000 
-	var currMultA: Int = numA 
-	var currMultB: Int = numB 
-	var accum: Long = 0 
-	while (currMultA < limit || currMultB < limit) { 
-      if (currMultA < currMultB) { 
-        accum += currMultA 
-        currMultA += numA 
-      } 
-      else if (currMultA > currMultB) { 
-        accum += currMultB 
-        currMultB += numB 
-      } 
-      else { 
-        accum += currMultA 
-        currMultA += numA 
-        currMultB += numB 
-      } 
-    } 
-    println("accum: " + accum) 
+  def main(args:Array[String]) { 
+    println("answer: " + sum(1000,3,5,3,5,0L)) 
   } 
+  def sum(limit:Int,m1:Int,m2:Int,a:Int,b:Int,accum:Long): Long = (a,b) match {
+    case (x:Int,y:Int) if (x >= limit && y >= limit) => accum
+    case (x:Int,y:Int) if x < y => sum(limit,m1,m2,x+m1,y,accum+x)
+    case (x:Int,y:Int) if x > y => sum(limit,m1,m2,x,y+m2,accum+y)
+    case _ => sum(limit,m1,m2,a+m1,b+m2,accum+a)
+  }
 }

@@ -4,12 +4,12 @@ By considering the terms in the Fibonacci sequence whose values do not exceed fo
 
 object problem2 {
   def main(args: Array[String]) {
-  println("accum: " + fibb(4000000,0L,1L,0L).toString) 
+    println("accum: " + fibb(4000000,0L,1L,0L).toString) 
   }
   def fibb(num: Int, fib_0: Long, fib_1: Long, sum: Long): Long = fib_1 match {
-    case x: Long if x < 4000000  => {
-      var fib_2 = fib_0 + fib_1
-      fibb(num, fib_1, fib_2, if (fib_2 % 2 == 0) sum+fib_2 else sum)
+    case x: Long if x < num  => {
+      var fib_2 = fib_0 + x
+      fibb(num, x, fib_2, if (fib_2 % 2 == 0) sum+fib_2 else sum)
     }
     case _ => sum
   }
